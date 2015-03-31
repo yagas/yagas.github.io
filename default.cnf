@@ -1,0 +1,9 @@
+[config]
+smtp_host=smtp.aliyun.com
+smtp_user=noreply@abc.com
+smtp_password=123456
+from=auto<noreply@abc.com>
+to=admin@abc.com
+host=198.10.10.10
+user=checkpoint
+password=checkpoint@abc.com
