@@ -23,7 +23,7 @@ import smtplib
 from email.mime.text import MIMEText
 import optparse
 from ConfigParser import ConfigParser
-import os,time
+import os,time,sys
 
 class SlaveStatu:
     __instance__ = None
@@ -180,7 +180,7 @@ class notify_email(object):
 
     def ring(self, message=[]):
         subject = message.pop(0)
-        messageBody = "".join( "", message )
+        messageBody = "".join( message )
         mailList = self.config["to"].split(";")
         datetime = time.strftime("%Y-%m-%d %H:%M:%S")
         for to in mailList:
