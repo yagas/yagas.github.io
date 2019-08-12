@@ -8,7 +8,7 @@ echo "██║╚██╔╝██║██╔══██║██║╚█�
 echo "██║ ╚═╝ ██║██║  ██║██║ ╚████║   ██║   ██║  ██║██║ ╚████║"
 echo "╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝"
 echo -e "\n"
-echo "https://www.mygctong.com    version: 0.2"
+echo "https://www.mygctong.com    version: 0.3"
 echo "author: yagas <yagas@sina.com>"
 echo "copyright (c) 2019 Manyan Network Technology Co. Ltd."
 echo -e "\n\n"
@@ -34,7 +34,7 @@ function checkrpm()
 	echo -e $message
 }
 
-# 检测目录是否存在
+# check directory unzip and software
 if [ ! -d $unpack ]; then
 	mkdir $unzipdir
 fi
@@ -54,12 +54,12 @@ checkrpm gd-devel
 checkrpm pcre2-devel
 checkrpm freetype-devel
 
-# 安装文件包
+# install rpm packages
 if [ ! -z $packages ]; then
 	yum -y install $packages
 fi
 
-# 判断libmcrypt是否安装，没安装则自动下载安装包
+# check and download libmcrypt
 libmcrypt=$(whereis libmcrypt.so | grep libmcrypt.so | wc -l)
 if [ $libmcrypt -ne 1 ]; then
 	if [ ! -f $software/libmcrypt-2.5.8.tar.gz ]; then
@@ -68,7 +68,7 @@ if [ $libmcrypt -ne 1 ]; then
 	fi
 fi
 
-# 判断php-5.6.40是否安装，没安装则自动下载安装包
+# check and download php-5.6.40
 php=$(whereis php | grep php | wc -l)
 if [ $libmcrypt -ne 1 ]; then
 	if [ ! -f $software/php-5.6.40.tar.gz ]; then
@@ -77,6 +77,14 @@ if [ $libmcrypt -ne 1 ]; then
 	fi
 fi
 
+# check and download mongodb-3.6.13
+mongo=$(whereis mongo | grep mongo | wc -l)
+if [ $mongo -ne 1 ]; then
+    if [ ! -f $software/mongodb-linux-x86_64-3.6.13.tgz ]; then
+        echo -e "\n\ndownload mongodb-3.6.13 ... \n"
+	curl -o $software/mongodb-linux-x86_64-3.6.13.tgz -L https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.6.13.tgz
+    fi
+fi
 
 
 if [ $libmcrypt -ne 1 ]; then
@@ -93,6 +101,14 @@ if [ $php -ne 1 ]; then
 	./configure --enable-fpm --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib-dir --with-libxml-dir --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --enable-mbregex --enable-mbstring --with-mhash --with-gd --enable-gd-native-ttf --enable-pcntl --enable-zip --with-bz2 --without-iconv --with-gettext --with-pear --enable-calendar --with-pdo-mysql --enable-opcache --with-openssl --with-mcrypt --prefix=/usr/local/php56
 	make -j4
 	sudo make install
+fi
+
+if [ $mongo -ne 1 ]; then
+    tar xzf $software/mongodb-linux-x86_64-3.6.13.tgz -C $unzipdir
+    cd $unzipdir/mongodb-linux-x86_64-3.6.13
+    ./configure --prefix=/usr/local/mongodb
+    make -j4
+    sudo make install
 fi
 
 echo -e "\nDone.\n"
