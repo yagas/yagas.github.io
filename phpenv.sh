@@ -56,13 +56,13 @@ checkrpm pcre2-devel
 checkrpm freetype-devel
 
 # install rpm package.
-if [ $packages != '' ]; then
+if [ "$packages" != "" ]; then
 	yum -y install $packages
 fi
 
 # check libmcrypt.so.
 libmcrypt=$(whereis libmcrypt.so | grep libmcrypt.so | wc -l)
-if [ $libmcrypt -neq 1 ]; then
+if [ "$libmcrypt" -neq "1" ]; then
 	if [ ! -f $software/libmcrypt-2.5.8.tar.gz ]; then
 		echo -e "\n\ndownload libmcrypt package ...\n"
 		curl -o $software/libmcrypt-2.5.8.tar.gz -L https://sourceforge.net/projects/mcrypt/files/Libmcrypt/2.5.8/libmcrypt-2.5.8.tar.gz/download
@@ -71,7 +71,7 @@ fi
 
 # check php-5.6.40
 php=$(whereis php | grep php | wc -l)
-if [ $libmcrypt -neq 1 ]; then
+if [ "$php" -neq "1" ]; then
 	if [ ! -f $software/php-5.6.40.tar.gz ]; then
 		echo -e "\n\ndownload php-5.6.40 package ...\n"
 		curl -o $software/php-5.6.40.tar.gz -L https://www.php.net/distributions/php-5.6.40.tar.gz
