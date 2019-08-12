@@ -8,7 +8,7 @@ echo "██║╚██╔╝██║██╔══██║██║╚█�
 echo "██║ ╚═╝ ██║██║  ██║██║ ╚████║   ██║   ██║  ██║██║ ╚████║"
 echo "╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝"
 echo -e "\n"
-echo "https://www.mygctong.com    version: 0.1"
+echo "https://www.mygctong.com    version: 0.2"
 echo "author: yagas <yagas@sina.com>"
 echo "copyright (c) 2019 Manyan Network Technology Co. Ltd."
 echo -e "\n\n"
