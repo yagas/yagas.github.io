@@ -95,4 +95,4 @@ if [ $php -ne 1 ]; then
 	sudo make install
 fi
 
-echo "\nDone.\n"
+echo -e "\nDone.\n"
