@@ -61,7 +61,7 @@ fi
 
 # 判断libmcrypt是否安装，没安装则自动下载安装包
 libmcrypt=$(whereis libmcrypt.so | grep libmcrypt.so | wc -l)
-if [ $libmcrypt -neq 1 ]; then
+if [ $libmcrypt -ne 1 ]; then
 	if [ ! -f $software/libmcrypt-2.5.8.tar.gz ]; then
 		echo -e "\n\ndownload libmcrypt package ...\n"
 		curl -o $software/libmcrypt-2.5.8.tar.gz -L https://sourceforge.net/projects/mcrypt/files/Libmcrypt/2.5.8/libmcrypt-2.5.8.tar.gz/download
