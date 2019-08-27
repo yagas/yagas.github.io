@@ -20,3 +20,4 @@ gpgkey=https://nginx.org/keys/nginx_signing.key
 EOF
 
 yum clean all && yum makecache
+yum-config-manager --enable nginx-stable
