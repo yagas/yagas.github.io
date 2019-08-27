@@ -21,3 +21,5 @@ EOF
 
 yum clean all && yum makecache
 yum-config-manager --enable nginx-stable
+yum --enablerepo=remi56 install php php-fpm php-mongodb php-gd php-redis
+yum install nginx
