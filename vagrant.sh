@@ -23,5 +23,6 @@ EOF
 sed -i 's/\/\/\//\//' /etc/yum.repos.d/nginx.repo
 yum clean all && yum makecache
 yum-config-manager --enable nginx-stable
+yum-config-manager --enable remi-php56
 yum --enablerepo=remi56 install php php-fpm php-mongodb php-gd php-redis
 yum install nginx
