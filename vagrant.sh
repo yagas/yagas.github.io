@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 yum -y install yum-utils yum-config-manager
+rpm --import https://rpms.remirepo.net/RPM-GPG-KEY-remi
 rpm -vih http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm
 rpm -Uvh https://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/remi-release-7.rpm
 
