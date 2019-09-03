@@ -22,8 +22,10 @@ enabled=0
 gpgkey=https://nginx.org/keys/nginx_signing.key
 EOF
 
-yum clean all && yum makecache
 yum-config-manager --enable nginx-stable
 yum-config-manager --enable remi-php56
-yum --enablerepo=remi-php56 install php php-fpm php-mongodb php-gd php-redis
-yum install nginx
+
+yum clean all && yum makecache
+
+yum -y --enablerepo=remi-php56 install php php-fpm php-mongodb php-gd php-redis
+yum -y install nginx
