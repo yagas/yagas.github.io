@@ -27,5 +27,5 @@ yum-config-manager --enable remi-php56
 
 yum clean all && yum makecache
 
-yum -y --enablerepo=remi-php56 install php php-fpm php-mongodb php-gd php-redis
+yum -y --enablerepo=remi-php56 install php php-fpm php-mongodb php-gd php-redis php-gd php-pdo php-pdo_mysql php-bcmath php-mbstring php-mcrypt
 yum -y install nginx
