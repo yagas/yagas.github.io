@@ -1,0 +1,12 @@
+[Unit]
+Description=Nginx Web Server
+After=syslog.target
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
